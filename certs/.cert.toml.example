@@ -1,0 +1,5 @@
+[[tls]]
+  entryPoints = ["https"]
+  [tls.certificate]
+    certFile = "/etc/traefik/certs/my.crt"
+    keyFile = "/etc/traefik/certs/my.key"

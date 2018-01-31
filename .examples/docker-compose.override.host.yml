@@ -2,4 +2,5 @@ version: '3.3'
 services:
   frontend:
     volumes:
-      - /etc/ssl/private:/etc/nginx/certs:ro
+    - /etc/ssl/private:/etc/ssl/certs:ro
+    - acme:/etc/traefik/acme

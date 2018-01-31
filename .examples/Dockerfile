@@ -1,3 +1,5 @@
-FROM jwilder/nginx-proxy:alpine
+FROM traefik
 
-COPY certs/* /etc/nginx/certs/
+COPY traefik.toml /etc/traefik/traefik.toml
+
+COPY certs/* /etc/traefik/certs/
