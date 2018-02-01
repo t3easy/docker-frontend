@@ -13,4 +13,4 @@ services:
 
 networks:
   frontend:
-    name: ${NETWORK_NAME}
+    name: ${FRONTEND_NETWORK}
