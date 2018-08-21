@@ -2,6 +2,7 @@ version: '3.5'
 services:
   frontend:
     image: traefik
+    container_name: ${FRONTEND_CONTAINER_NAME}
     restart: always
     ports:
       - "80:80"
@@ -10,6 +11,16 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
     - frontend
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.rule: Host:${VHOST}
+      traefik.frontend.headers.browserXSSFilter: "true"
+      traefik.frontend.headers.contentTypeNosniff: "true"
+      traefik.frontend.headers.frameDeny: "true"
+      traefik.frontend.headers.STSSeconds: "31536000"
+      traefik.frontend.headers.STSIncludeSubdomains: "true"
+      traefik.frontend.headers.STSPreload: "false"
+      traefik.port: "8080"
 
 networks:
   frontend:

@@ -29,13 +29,15 @@ defaultEntryPoints = ["http", "https"]
 # Optional
 # Default:
 [entryPoints]
-    [entryPoints.http]
-    address = ":80"
-    [entryPoints.https]
-    address = ":443"
-      [entryPoints.https.tls]
+  [entryPoints.http]
+  address = ":80"
 
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
 
+  [entryPoints.traefik]
+  address = ":8080"
 
 # Traefik logs
 # Enabled by default and log to stdout
@@ -86,14 +88,31 @@ defaultEntryPoints = ["http", "https"]
 # Web configuration backend
 ################################################################
 
-# Enable web configuration backend
-[web]
+# API definition
+[api]
+# Name of the related entry point
+#
+# Optional
+# Default: "traefik"
+#
+entryPoint = "traefik"
 
-# Web administration port
+# Enabled Dashboard
 #
-# Required
+# Optional
+# Default: true
 #
-address = ":8080"
+dashboard = true
+
+# Enable debug mode.
+# This will install HTTP handlers to expose Go expvars under /debug/vars and
+# pprof profiling data under /debug/pprof.
+# Additionally, the log level will be set to DEBUG.
+#
+# Optional
+# Default: false
+#
+# debug = true
 
 ################################################################
 # Docker configuration backend
