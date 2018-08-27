@@ -1,2 +1,2 @@
 /certs/*
-!/certs/.gitkeep
+!/certs/.cert.toml.example
