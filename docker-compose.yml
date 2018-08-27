@@ -1,7 +1,6 @@
 version: '3.5'
 services:
   frontend:
-    image: traefik
     container_name: ${FRONTEND_CONTAINER_NAME}
     restart: always
     ports:
@@ -13,6 +12,7 @@ services:
     - frontend
     labels:
       traefik.enable: "true"
+      traefik.frontend.auth.basic: ${BASIC_AUTHENTICATION}
       traefik.frontend.rule: Host:${VHOST}
       traefik.frontend.headers.browserXSSFilter: "true"
       traefik.frontend.headers.contentTypeNosniff: "true"
